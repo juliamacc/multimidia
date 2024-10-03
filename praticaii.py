@@ -1,3 +1,6 @@
+# Participantes: Guilherme Augusto, Julia Macedo e Victor Henrique Labes
+
+
 from urllib.request import urlopen
 from PIL import Image # package pillow
 import math
@@ -58,6 +61,46 @@ def criarImagemBinaria():
 # Chamada da função
 imagem_binaria = criarImagemBinaria()
 imagem_binaria.show()
+'''
+
+def separar_canais(imagem_path):
+    img = Image.open(imagem_path)
+    
+    # Verifica se a imagem está no modo RGB, não sei se precisa disso
+    if img.mode != "RGB":
+        raise ValueError("A imagem deve estar no formato RGB.")
+    
+    # Cria imagens vazias para cada canal
+    r_channel = Image.new("RGB", img.size)
+    g_channel = Image.new("RGB", img.size)
+    b_channel = Image.new("RGB", img.size)
+    
+    pixels = img.load()
+    
+    for i in range(img.size[0]):
+        for j in range(img.size[1]):
+            r, g, b = pixels[i, j]
+            r_channel.putpixel((i, j), (r, 0, 0))
+            g_channel.putpixel((i, j), (0, g, 0))
+            b_channel.putpixel((i, j), (0, 0, b))
+    
+    r_channel.save("canal_vermelho.png")
+    g_channel.save("canal_verde.png")
+    b_channel.save("canal_azul.png")
+    
+    return r_channel, g_channel, b_channel
+
+'''
+# Chamada da função
+imagem_path = "imagem.png"
+r_img, g_img, b_img = separar_canais(imagem_path)
+'''
+
+'''
+# Exibe as imagens resultantes
+r_img.show()
+g_img.show()
+b_img.show()
 '''
 
 img = Image.open(urlopen("https://www.inf.ufsc.br/~roberto.willrich/INE5431/RGB.jpg"))

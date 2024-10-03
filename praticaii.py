@@ -13,26 +13,18 @@ def criarImagemRGB():
     return img
 
 def converterParaEscalaDeCinza(caminho_imagem):
-# Abre a imagem original
-img = Image.open(caminho_imagem)
-# Cria uma nova imagem em modo "L" (escala de cinza) com as mesmas dimensões
-img_cinza = Image.new("L", img.size)
+    img = Image.open(caminho_imagem)
+    img_cinza = Image.new("L", img.size)
 
-# Carrega os dados de pixel das imagens
-pixels_originais = img.load()
-pixels_cinza = img_cinza.load()
-
-# Itera sobre cada pixel da imagem
-for i in range(img.size[0]):
-for j in range(img.size[1]):
-# Obtém o valor RGB do pixel
-r, g, b = pixels_originais[i, j]
-# Aplica a fórmula para conversão
-cinza = int(0.3 * r + 0.59 * g + 0.11 * b)
-# Define o valor do pixel na imagem em escala de cinza
-pixels_cinza[i, j] = cinza
-
-return img_cinza
+    pixels_originais = img.load()
+    pixels_cinza = img_cinza.load()
+    
+    for i in range(img.size[0]):
+        for j in range(img.size[1]):
+            r, g, b = pixels_originais[i, j] # Obtém o valor RGB do pixel
+            cinza = int(0.3 * r + 0.59 * g + 0.11 * b) # Y = 0.3R + 0.59G + 0.11B
+            pixels_cinza[i, j] = cinza
+    return img_cinza
 
 def criarImagemBinaria():
     # Cria uma nova imagem em tons de cinza

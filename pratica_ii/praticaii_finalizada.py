@@ -62,13 +62,13 @@ def converterParaEscalaDeCinza(img):
     img_rgb = img
     img_cinza = Image.new("L", img_rgb.size)
 
-    raster_rgb = img_rgb.load()
-    raster_cinza = img_cinza.load()
+    raster_rgb = img_rgb.load() # carrega os pixels da imagem original
+    raster_cinza = img_cinza.load() # carrega os pixels da imagem cinza
 
     for u in range(img_rgb.size[0]):
-        for v in range(img_rgb.size[1]):
-            r, g, b = raster_rgb[u, v]
-            raster_cinza[u, v] = int(0.3*r + 0.59*g + 0.11*b)
+        for v in range(img_rgb.size[1]): 
+            r, g, b = raster_rgb[u, v] # obtém o valor de cada pixel
+            raster_cinza[u, v] = int(0.3*r + 0.59*g + 0.11*b) # atribui cada pixel da imagem cinza, através do calculo da luminância
     return img_cinza
 ################ Item II: ####################
 

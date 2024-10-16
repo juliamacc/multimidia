@@ -136,13 +136,13 @@ img = Image.open(urlopen("https://www.inf.ufsc.br/~roberto.willrich/INE5431/RGB.
 #criarImagemCinza().show()
 #criarImagemBinaria().show()
 #############################################
-imagem_reduzida = criarImagemMetadeRGB(img)
+imagem_reduzida = criarImagemMetadeRGB(img) # item I
 imagem_reduzida.show() # item I
-imagem_cinza = converterParaEscalaDeCinza(img)
+imagem_cinza = converterParaEscalaDeCinza(img) # item II
 imagem_cinza.show() # item II
-imagem_binaria = criarRGBBinaria(img)
+imagem_binaria = criarRGBBinaria(img) # item III
 imagem_binaria.show() # item III
-img_r, img_g, img_b = separarCanaisRGB(img)
+img_r, img_g, img_b = separarCanaisRGB(img) # item IV 
 img_r.show() # item IV 
 img_g.show() # item IV
 img_b.show() # item IV

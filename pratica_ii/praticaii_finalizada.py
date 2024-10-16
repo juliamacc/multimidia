@@ -1,4 +1,4 @@
-# Participantes do Grupo 9: Guilherme Augusto, Julia Macedo e Victor Henrique Labes
+# Participantes do Grupo 9: Guilherme Augusto (22100621), Julia Macedo (23250860) e Victor Henrique Labes de Figueiredo (22200378).
 
 from urllib.request import urlopen
 from PIL import Image # package pillow
@@ -19,19 +19,19 @@ def criarImagemMetadeRGB(img):
     img_rgb = img  
     original_raster = img_rgb.load()
 
-    # cria a nova imagem com as dimensões reduzidas
-    nova_img = Image.new("RGB", (img_rgb.size[0] // 2, img_rgb.size[1] // 2))
-    nova_raster = nova_img.load()
+    
+    nova_img = Image.new("RGB", (img_rgb.size[0] // 2, img_rgb.size[1] // 2)) # cria a nova imagem com as dimensões reduzidas
+    nova_raster = nova_img.load() # carrega os pixels da imagem reduzida 
 
     
-    for i in range(img_rgb.size[0] // 2): #laços para percorrer com as novas dimensões.
+    for i in range(img_rgb.size[0] // 2): # laços para percorrer com as novas dimensões na imagem original.
         for j in range(img_rgb.size[1] // 2):
             r_total = 0
             g_total = 0
             b_total = 0
             for x in range(2):
                 for y in range(2):
-                    r, g, b = original_raster[i * 2 + x, j * 2 + y]
+                    r, g, b = original_raster[i * 2 + x, j * 2 + y] 
                     r_total += r
                     g_total += g
                     b_total += b
@@ -41,8 +41,8 @@ def criarImagemMetadeRGB(img):
             g_medio = g_total // 4
             b_medio = b_total // 4
 
-            # atribuindo o pixel resultante à nova imagem
-            nova_raster[i, j] = (r_medio, g_medio, b_medio)
+            
+            nova_raster[i, j] = (r_medio, g_medio, b_medio) # atribuindo o pixel resultante à nova imagem
 
     return nova_img
 ################ Item I: ####################
@@ -121,11 +121,11 @@ def separarCanaisRGB(img):
 
     for i in range(img.size[0]):
         for j in range(img.size[1]):
-            r, g, b = raster_rgb[i, j]  # Obtém os valores RGB do pixel
+            r, g, b = raster_rgb[i, j]  # obtém os valores RGB do pixel
 
-            raster_r[i, j] = (r, 0, 0) #para a imagem do canal R
-            raster_g[i, j] = (0, g, 0) #para a imagem do canal G
-            raster_b[i, j] = (0, 0, b) #para a imagem do canal B
+            raster_r[i, j] = (r, 0, 0) # para a imagem do canal R
+            raster_g[i, j] = (0, g, 0) # para a imagem do canal G
+            raster_b[i, j] = (0, 0, b) # para a imagem do canal B
 
     return img_r, img_g, img_b
 ################ Item IV: ####################

@@ -47,9 +47,11 @@ if __name__ == "__main__":
     #filepathdec = 'peixe1.cuif'
     cuif.save('peixe2.cuif')
     filepathdec = 'peixe2.cuif'
-    #Abre um arquivo Cuif e gera o objeto Cuif
+
+    #Abre um arquivo Cuif e gera o objeto Cuif.1
     #cuif1 = Cuif.openCUIF('peixe1.cuif')
 
+    #Abre um arquivo Cuif e gera o objeto Cuif.2
     cuif2 = Cuif.openCUIF('peixe2.cuif')
     
     # Converte arquivo Cuif.1 em BMP e mostra

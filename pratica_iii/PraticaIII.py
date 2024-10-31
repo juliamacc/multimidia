@@ -2,7 +2,7 @@ from PIL import Image
 from Cuif import Cuif
 import math
 
-def PSNR(original,decodificada,b):
+def PSNR(original,decodificada,b): #### Está correto de acordo com a fórmula, não houve alteração.
     try:
         mse = MSE(original,decodificada) 
         psnr = 10*math.log10(((2**b-1)**2)/mse)

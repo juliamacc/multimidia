@@ -1,8 +1,8 @@
 ''' 
-INE5431 Sistemas Multimí­dia
+INE5431 Sistemas Multimï¿½ï¿½dia
 Prof. Roberto Willrich
 
-Aula Prática IV: Compressão de Entropia
+Aula Prï¿½tica IV: Compressï¿½o de Entropia
 
 '''
 
@@ -18,33 +18,67 @@ def PSNR(original,decodificada,b):
     except ZeroDivisionError:
         return "Infinito"
 
-def MSE(ori, dec):
+def MSE(ori, dec): 
+    mse = 0
     nsymbols = ori.width * ori.height * 3
     for i in range(ori.width):
         for j in range(ori.height):
             ori_r, ori_g, ori_b = ori.getpixel((i, j))
             dec_r, dec_g, dec_b = dec.getpixel((i, j))
-    return 0
+            mse += (ori_r - dec_r) ** 2
+            mse += (ori_g - dec_g) ** 2
+            mse += (ori_b - dec_b) ** 2
+    mse /= nsymbols
+    return mse
 
 if __name__ == "__main__":
     
-    # Leitura da imagem 
-    filepath = 'lena.bmp'
+    # Indique a matrï¿½ï¿½cula dos alunos do grupo na lista abaixo
+    matriculas = [22100621, 23250860, 22200378]
+    
+    
+    # Geraï¿½ï¿½o do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
+    
+    ## leitura dos arquivos
+    for arquivo in ['lena', 'bandeira']:
+       
+        img = Image.open(arquivo + '.bmp')
 
-    img = Image.open(filepath)
-    
-    # Indique a matrí­cula dos alunos do grupo na lista abaixo
-    matriculas = [17100532,21220183]
-    
-    
-    # Geração do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
-    cuif1 = Cuif(img,1,matriculas)
-    cuif1.printHeader()
-    cuif1.show()
-    cuif1.save('lena1.cuif')
-    cuif1.saveBMP('lena1.bmp')
-    img1 = Image.open('lena1.bmp')
-    print("PSNR do CUIF.1",PSNR(img,img1,8)) 
-    
+        # Indique a matrÃ­cula dos alunos do grupo na lista abaixo
+        matriculas = [17200449, 18200443, 20104138]
+
+        # GeraÃ§Ã£o do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
+        cuif1 = Cuif(img, 1, matriculas)
+        cuif1.printHeader()
+        cuif1.show()
+        cuif1.save(arquivo + '1.cuif')
+        cuif1.saveBMP(arquivo + '1.bmp')
+        img1 = Image.open(arquivo + '1.bmp')
+        print(f'PSNR do CUIF.1 ({arquivo}): {PSNR(img, img1, 8)})\n')
+
+        cuif2 = Cuif(img, 2, matriculas)
+        cuif2.printHeader()
+        cuif2.show()
+        cuif2.save(arquivo + '2.cuif')
+        cuif2.saveBMP(arquivo + '2.bmp')
+        img2 = Image.open(arquivo + '2.bmp')
+        print(f'PSNR do CUIF.2 ({arquivo}): {PSNR(img, img2, 8)})\n')
+
+
+        cuif3 = Cuif(img, 3, matriculas)
+        cuif3.printHeader()
+        cuif3.show()
+        cuif3.save(arquivo + '3.cuif')
+        cuif3.saveBMP(arquivo + '3.bmp')
+        img3 = Image.open(arquivo + '3.bmp')
+        print(f'PSNR do CUIF.3 ({arquivo}): {PSNR(img, img3, 8)})\n')
+
+        cuif4 = Cuif(img, 4, matriculas)
+        cuif4.printHeader()
+        cuif4.show()
+        cuif4.save(arquivo + '4.cuif')
+        cuif4.saveBMP(arquivo + '4.bmp')
+        img4 = Image.open(arquivo + '4.bmp')
+        print(f'PSNR do CUIF.3 ({arquivo}): {PSNR(img, img4, 8)})\n')
 
     print("THE END")

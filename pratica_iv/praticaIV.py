@@ -79,6 +79,6 @@ if __name__ == "__main__":
         cuif4.save(arquivo + '4.cuif')
         cuif4.saveBMP(arquivo + '4.bmp')
         img4 = Image.open(arquivo + '4.bmp')
-        print(f'PSNR do CUIF.3 ({arquivo}): {PSNR(img, img4, 8)})\n')
+        print(f'PSNR do CUIF.4 ({arquivo}): {PSNR(img, img4, 8)})\n')
 
     print("THE END")

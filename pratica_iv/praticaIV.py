@@ -39,16 +39,16 @@ if __name__ == "__main__":
     
     # Gera��o do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
     
-    ## leitura dos arquivos
-    for arquivo in ['lena', 'bandeira']:
+  
+    for arquivo in ['lena', 'bandeira']:  ## leitura dos arquivos
        
         img = Image.open(arquivo + '.bmp')
 
         # Indique a matrícula dos alunos do grupo na lista abaixo
         matriculas = [17200449, 18200443, 20104138]
 
-        # Geração do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
-        cuif1 = Cuif(img, 1, matriculas)
+        
+        cuif1 = Cuif(img, 1, matriculas) # Geração do arquivo Cuif.1, converte o arquivo Cuif.1 em BMP, e calcula o PSNR
         cuif1.printHeader()
         cuif1.show()
         cuif1.save(arquivo + '1.cuif')
